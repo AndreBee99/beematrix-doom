@@ -31,6 +31,8 @@ namespace beematrix_doom
 
             Loaded += MainWindow_Loaded;
             Closing += MainWindow_Closing;
+
+            WvDoomPlayer.NavigationCompleted += WvDoomPlayer_NavigationCompleted;
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -228,6 +230,31 @@ namespace beematrix_doom
             catch (Exception ex)
             {
                 Debug.WriteLine($"Stream capture error: {ex.Message}");
+            }
+        }
+
+        private async void WvDoomPlayer_NavigationCompleted(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
+        {
+            if (e.IsSuccess)
+            {
+                try
+                {
+                    string script = @"
+                        var style = document.createElement('style');
+                        style.innerHTML = 'canvas#DoomGame { width: 100vw !important; height: 100vh !important; object-fit: fill !important; display: block !important; opacity: 1.0 !important; } html, body { overflow: hidden !important; background-color: black !important; }';
+                        document.head.appendChild(style);
+                        var canvas = document.getElementById('DoomGame');
+                        if (canvas) {
+                            canvas.focus();
+                        }
+                    ";
+                    await WvDoomPlayer.ExecuteScriptAsync(script);
+                    LogToTerminal("Injected fullscreen CSS scaling and focused DOOM canvas.");
+                }
+                catch (Exception ex)
+                {
+                    LogToTerminal($"Failed to inject scaling script: {ex.Message}");
+                }
             }
         }
 
