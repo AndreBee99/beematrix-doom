@@ -148,7 +148,7 @@
             <Grid>
                 <!-- WebView2 Browser Control -->
                 <wv2:WebView2 x:Name="WvDoomPlayer" 
-                              Source="https://doom.poncet.dev/"
+                              Source="https://jacobenget.github.io/doom.wasm/examples/browser/doom.html"
                               Focusable="True"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 

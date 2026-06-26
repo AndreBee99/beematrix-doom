@@ -8,7 +8,7 @@ A standalone C# WPF application to run classic shareware **DOOM** on your PC and
 
 ## Features
 
-*   **Embedded Wasm DOOM**: Runs the original shareware version of DOOM inside a WPF `WebView2` browser control (hosting [doom.poncet.dev](https://doom.poncet.dev/)).
+*   **Embedded Wasm DOOM**: Runs the original shareware version of DOOM inside a WPF `WebView2` browser control (hosting [jacobenget.github.io/doom.wasm/examples/browser/doom.html](https://jacobenget.github.io/doom.wasm/examples/browser/doom.html)).
 *   **Direct Screen Capture**: Captures the game frame buffer at 20 FPS using GDI+ screen region copies, automatically adjusting for Windows DPI screen scaling.
 *   **Low-Latency BLE Stream**: Downscales the frames to `32x32` and streams them via Bluetooth LE using custom chunked packets.
 *   **Auto MAC Resolution**: Automatically loads the last connected BLE MAC address from your main BeeMatrix configuration folder.
