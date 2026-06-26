@@ -1,0 +1,9 @@
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+App.config
+config.json
